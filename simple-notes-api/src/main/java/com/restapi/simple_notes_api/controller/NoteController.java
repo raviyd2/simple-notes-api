@@ -28,7 +28,7 @@ public class NoteController {
     @Autowired
     private NoteService noteService;
 
-    // Create note
+    
     @PostMapping
     public NotesDTO createNote(@RequestBody NotesDTO noteDTO) {
         Notes note = new Notes();
@@ -40,7 +40,7 @@ public class NoteController {
         return new NotesDTO(savedNote.getId(), savedNote.getTitle(), savedNote.getContent());
     }
 
-    // Get all notes
+   
     @GetMapping
     public List<NotesDTO> getAllNotes() {
         List<Notes> notes = noteService.getAllNotes();
@@ -49,7 +49,7 @@ public class NoteController {
                     .collect(Collectors.toList());
     }
 
-    // Get note by ID
+   
     @GetMapping("/{id}")
     public ResponseEntity<NotesDTO> getNoteById(@PathVariable Long id) {
         Optional<Notes> note = noteService.getNotesById(id);
@@ -61,7 +61,7 @@ public class NoteController {
         }
     }
 
-    // Update note by ID
+    
     @PutMapping("/{id}")
     public ResponseEntity<NotesDTO> updateNote(@PathVariable Long id, @RequestBody NotesDTO notesDTO) {
         Notes updatedNote = noteService.updateNotes(id, notesDTO);
@@ -73,7 +73,7 @@ public class NoteController {
         }
     }
 
-    // Delete note by ID
+  
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteNote(@PathVariable Long id) {
         boolean deleted = noteService.deleteNotes(id); 
